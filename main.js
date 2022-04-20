@@ -1,4 +1,8 @@
 const root = document.querySelector("#root"); 
+const dogButton = document.querySelector("#dog-btn")
+const catButton = document.querySelector("#cat-btn")
+const dinoButton = document.querySelector("#dino-btn")
+const allButton = document.querySelector("#all-btn")
 const pets = [
     {
       name: "Dusty",
@@ -217,24 +221,89 @@ pets.forEach((pet, index)=> {
 }); 
 
 
+const renderToDom = (divId, textToRender) => {
+  const selectedDiv = document.querySelector(divId); 
+  selectedDiv.innerHTML = textToRender; 
+}; 
+
 let domString = ""; 
 
-pets.forEach(pet => {
-  domString += 
-  `<div class="card" style="width: 18rem;">
-    <div class="card-header card-title text-secondary">
-      <h5>${pet.name}</h5>
-    </div>
-    <img src="${pet.imageUrl}" class="card-img-top rounded-1" alt="${pet.type}">
-    <div class="card-body">
-      <p>${pet.color}</p>
-      <p class="card-text">Special Skill: ${pet.specialSkill}</p>
-    </div>
-    <div class="card-footer ${pet.type}-footer">
-      <p class="text-muted">${pet.type}</p>
-    </div>
-  </div>`
-});
+const init = (array) => {
+  renderCards(array)
+  console.log(array)
+  renderToDom("#root", domString)
+}
+
+window.onload = function() {
+  init(pets)
+}  
+
+const renderCards = (array) => {
+  for (const item of array) {
+     domString += 
+      `<div class="card" style="width: 18rem;">
+        <div class="card-header card-title text-secondary">
+        <h4>${item.name}</h4>
+        </div>
+        <img src="${item.imageUrl}" class="card-img-top rounded-1" alt="${item.type}">
+        <div class="card-body">
+          <p>${item.color}</p>
+          <p class="card-text">Special Skill: ${item.specialSkill}</p>
+        </div>
+        <div class="card-footer ${item.type}-footer">
+          <p class="text-muted">${item.type}</p>
+        </div>
+      </div>`
+  }
+}
+
+// renderCards(pets)
 
 
-root.innerHTML += domString; 
+const filter = (array, type) => {
+      const typeArray = []; 
+      array.forEach((item) => {
+        if (item.type === type) {
+          typeArray.push(item)
+        } 
+      })
+      return typeArray; 
+}
+
+
+dogButton.addEventListener("click", (e) => {
+    if(e.target.id === "dog-btn") {
+      domString = "" 
+      const newArr = filter(pets, "dog"); 
+      console.log(newArr)
+      renderCards(newArr)
+      renderToDom("#root", domString)
+    }
+}); 
+
+catButton.addEventListener("click", (e) => {
+    if(e.target.id === "cat-btn") {
+      domString = "" 
+      const newArr = filter(pets, "cat"); 
+      console.log(newArr)
+      renderCards(newArr)
+      renderToDom("#root", domString)
+    }
+}); 
+
+dinoButton.addEventListener("click", (e) => {
+    if(e.target.id === "dino-btn") {
+      domString = "" 
+      const newArr = filter(pets, "dino"); 
+      console.log(newArr)
+      renderCards(newArr)
+      renderToDom("#root", domString)
+    }
+}); 
+
+allButton.addEventListener("click", (e) => {
+      console.log(e)
+      domString = "" 
+      renderCards(pets)
+      renderToDom("#root", domString)
+}); 
