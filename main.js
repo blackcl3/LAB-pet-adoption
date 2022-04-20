@@ -1,3 +1,4 @@
+const root = document.querySelector("#root"); 
 const pets = [
     {
       name: "Dusty",
@@ -210,3 +211,30 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+
+pets.forEach((pet, index)=> {
+  pet.id = index+1; 
+}); 
+
+
+domString = ""; 
+
+pets.forEach(pet => {
+  domString += 
+  `<div class="card" style="width: 18rem;">
+    <div class="card-header card-title">
+      <h5>${pet.name}</h5>
+    </div>
+    <img src="${pet.imageUrl}" class="card-img-top rounded-1" alt="${pet.type}">
+    <div class="card-body">
+      <p>${pet.color}</p>
+      <p class="card-text">Special Skill: ${pet.specialSkill}</p>
+    </div>
+    <div class="card-footer ${pet.type}-footer">
+      <p class="text-muted">${pet.type}</p>
+  </div>
+  </div>`
+});
+
+
+root.innerHTML += domString; 
