@@ -1,3 +1,7 @@
+button {
+  align-content: center;
+}
+
 
 .cardContainer {
   display: flex; 
@@ -6,7 +10,7 @@
 
 .card {
   text-align: center;
-  margin: 30px; 
+  margin: 40px; 
 }
 
 .card-body > p:first-child {

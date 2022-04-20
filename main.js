@@ -217,12 +217,12 @@ pets.forEach((pet, index)=> {
 }); 
 
 
-domString = ""; 
+let domString = ""; 
 
 pets.forEach(pet => {
   domString += 
   `<div class="card" style="width: 18rem;">
-    <div class="card-header card-title">
+    <div class="card-header card-title text-secondary">
       <h5>${pet.name}</h5>
     </div>
     <img src="${pet.imageUrl}" class="card-img-top rounded-1" alt="${pet.type}">
@@ -232,7 +232,7 @@ pets.forEach(pet => {
     </div>
     <div class="card-footer ${pet.type}-footer">
       <p class="text-muted">${pet.type}</p>
-  </div>
+    </div>
   </div>`
 });
 
