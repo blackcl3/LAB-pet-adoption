@@ -1,7 +1,29 @@
-body {
-  background-color: blue;
-}
 
 .cardContainer {
   display: flex; 
+  flex-wrap: wrap;
+}
+
+.card {
+  text-align: center;
+  margin: 30px; 
+}
+
+.card-body > p:first-child {
+  font-weight: bold;
+}
+
+.dog-footer {
+  background-color: rgb(213, 235, 245); 
+  text-transform: capitalize;
+}
+
+.cat-footer {
+  background-color: rgb(219, 238, 212);
+  text-transform: capitalize;
+}
+
+.dino-footer {
+  background-color: rgb(252, 247, 224); 
+  text-transform: capitalize;
 }
