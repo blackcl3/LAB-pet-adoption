@@ -15,6 +15,64 @@
     <button id="dino-btn" type="button" class="btn btn-primary">Dino</button>
     <button id="all-btn" type="button" class="btn btn-primary">All</button>
   </div>
+  <form class="form-control">
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="inputPetName" class="col-form-label">Pet Name</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="petName" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span id="nameHelpBlock" class="form-text">
+            Please enter your pet's name. 
+          </span>
+        </div>
+      </div>
+      
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="inputPetURL" class="col-form-label">Pet Picture</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="petURL" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span id="nameHelpBlock" class="form-text">
+            Please include a URL for a picture of your pet. 
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="inputPetSpecialSkill" class="col-form-label">Pet Special Skill</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="petSpecialSkill" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span id="nameHelpBlock" class="form-text">
+            Please include a short description of your pet's skill. 
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="inputPetType" class="col-form-label">Pet Type</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="petType" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span id="nameHelpBlock" class="form-text">
+            Please enter what kind of pet you have (Cat, Dog, or Dino). 
+          </span>
+        </div>
+      </div>
+  </form>
+  
   
   <div id="root" class="cardContainer"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
