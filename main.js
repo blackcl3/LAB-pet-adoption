@@ -275,7 +275,6 @@ dogButton.addEventListener("click", (e) => {
     if(e.target.id === "dog-btn") {
       domString = "" 
       const newArr = filter(pets, "dog"); 
-      console.log(newArr)
       renderCards(newArr)
       renderToDom("#root", domString)
     }
@@ -285,7 +284,6 @@ catButton.addEventListener("click", (e) => {
     if(e.target.id === "cat-btn") {
       domString = "" 
       const newArr = filter(pets, "cat"); 
-      console.log(newArr)
       renderCards(newArr)
       renderToDom("#root", domString)
     }
@@ -295,7 +293,6 @@ dinoButton.addEventListener("click", (e) => {
     if(e.target.id === "dino-btn") {
       domString = "" 
       const newArr = filter(pets, "dino"); 
-      console.log(newArr)
       renderCards(newArr)
       renderToDom("#root", domString)
     }
