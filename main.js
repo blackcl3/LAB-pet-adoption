@@ -226,19 +226,8 @@ const renderToDom = (divId, textToRender) => {
   selectedDiv.innerHTML = textToRender; 
 }; 
 
-let domString = ""; 
-
-const init = (array) => {
-  renderCards(array)
-  console.log(array)
-  renderToDom("#root", domString)
-}
-
-window.onload = function() {
-  init(pets)
-}  
-
 const renderCards = (array) => {
+  let domString = ""; 
   for (const item of array) {
      domString += 
       `<div class="card" style="width: 18rem;">
@@ -255,52 +244,137 @@ const renderCards = (array) => {
         </div>
       </div>`
   }
+  renderToDom("#root", domString)
 }
 
-// renderCards(pets)
+// rewrite buttons html to add buttons using function
 
+// rewrite form html to add form using function
 
-const filter = (array, type) => {
-      const typeArray = []; 
-      array.forEach((item) => {
-        if (item.type === type) {
-          typeArray.push(item)
-        } 
-      })
-      return typeArray; 
+const renderForm = () => {
+  let domString = ""; 
+  domString = `<form id="add-new-pet-form" class="form-control">
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="inputPetName" class="col-form-label">Pet Name</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="name" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span id="nameHelpBlock" class="form-text">
+            Please enter your pet's name. 
+          </span>
+        </div>
+      </div>
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="color" class="col-form-label">Pet Color</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="color" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span id="nameHelpBlock" class="form-text">
+            Please enter your pet's color.  
+          </span>
+        </div>
+      </div>
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="imageURL" class="col-form-label">Pet Picture</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="imageURL" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span class="form-text">
+            Please include a URL for a picture of your pet. 
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="inputPetSpecialSkill" class="col-form-label">Pet Special Skill</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="specialSkill" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span id="nameHelpBlock" class="form-text">
+            Please include a short description of your pet's skill. 
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="type" class="col-form-label">Pet Type</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="type" class="form-control" aria-describedby="">
+        </div>
+        <div class="col-auto">
+          <span id="nameHelpBlock" class="form-text">
+            Please enter what kind of pet you have (Cat, Dog, or Dino). 
+          </span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>`; 
+  renderToDom("#form-container", domString)
 }
 
-
-dogButton.addEventListener("click", (e) => {
+const addeventlisteners = () => {
+  let domString = ""; 
+  // filter buttons event listeners
+  const filterButtons = document.querySelector("#filter-btns"); 
+  filterButtons.addEventListener("click", (e) => {
+    // dog button event listener
     if(e.target.id === "dog-btn") {
       domString = "" 
-      const newArr = filter(pets, "dog"); 
+      //const newArr = filter(pets, "dog"); 
+      const newArr = pets.filter((pet) => pet.type === "dog")
       renderCards(newArr)
-      renderToDom("#root", domString)
-    }
-}); 
-
-catButton.addEventListener("click", (e) => {
-    if(e.target.id === "cat-btn") {
+    // cat button event listener 
+    } else if (e.target.id === "cat-btn") {
       domString = "" 
-      const newArr = filter(pets, "cat"); 
+      const newArr = pets.filter((pet) => pet.type === "cat")
       renderCards(newArr)
-      renderToDom("#root", domString)
-    }
-}); 
 
-dinoButton.addEventListener("click", (e) => {
-    if(e.target.id === "dino-btn") {
+    } else if (e.target.id === "dino-btn") {
       domString = "" 
-      const newArr = filter(pets, "dino"); 
+      const newArr = pets.filter((pet) => pet.type === "dino")
       renderCards(newArr)
-      renderToDom("#root", domString)
-    }
-}); 
-
-allButton.addEventListener("click", (e) => {
-      console.log(e)
+    } else if (e.target.id === "all-btn") {
       domString = "" 
       renderCards(pets)
-      renderToDom("#root", domString)
-}); 
+    }
+  }); 
+  // event listeners for form
+  const form = document.querySelector("#add-new-pet-form"); 
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); 
+    newPetObject = {
+      name: document.querySelector("#name").value,
+      color: document.querySelector("#color").value,
+      specialSkill: document.querySelector("#specialSkill").value,
+      type: document.querySelector("#type").value,
+      imageUrl: document.querySelector("#imageURL").value
+    },
+  pets.push(newPetObject); 
+  renderCards(pets); 
+  form.reset()
+  }); 
+}
+
+const StartApp = (array = pets) => {
+  renderCards(array)
+  renderForm()
+  addeventlisteners()
+}
+
+window.onload = function() {
+  StartApp(pets)
+}  

@@ -9,69 +9,13 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div class="d-grid gap-2 d-md-flex justify-content-center">
+  <div id="filter-btns" class="d-grid gap-2 d-md-flex justify-content-center">
     <button id="cat-btn" type="button" class="btn btn-primary">Cat</button>
     <button id="dog-btn" type="button" class="btn btn-primary">Dog</button>
     <button id="dino-btn" type="button" class="btn btn-primary">Dino</button>
     <button id="all-btn" type="button" class="btn btn-primary">All</button>
   </div>
-  <form class="form-control">
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="inputPetName" class="col-form-label">Pet Name</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="petName" class="form-control" aria-describedby="">
-        </div>
-        <div class="col-auto">
-          <span id="nameHelpBlock" class="form-text">
-            Please enter your pet's name. 
-          </span>
-        </div>
-      </div>
-      
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="inputPetURL" class="col-form-label">Pet Picture</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="petURL" class="form-control" aria-describedby="">
-        </div>
-        <div class="col-auto">
-          <span id="nameHelpBlock" class="form-text">
-            Please include a URL for a picture of your pet. 
-          </span>
-        </div>
-      </div>
-
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="inputPetSpecialSkill" class="col-form-label">Pet Special Skill</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="petSpecialSkill" class="form-control" aria-describedby="">
-        </div>
-        <div class="col-auto">
-          <span id="nameHelpBlock" class="form-text">
-            Please include a short description of your pet's skill. 
-          </span>
-        </div>
-      </div>
-
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="inputPetType" class="col-form-label">Pet Type</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="petType" class="form-control" aria-describedby="">
-        </div>
-        <div class="col-auto">
-          <span id="nameHelpBlock" class="form-text">
-            Please enter what kind of pet you have (Cat, Dog, or Dino). 
-          </span>
-        </div>
-      </div>
-  </form>
+  <div id="form-container"></div>
   
   
   <div id="root" class="cardContainer"></div>
