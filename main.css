@@ -3,7 +3,7 @@ button {
 }
 
 
-.cardContainer {
+.cardDiv {
   display: flex; 
   flex-wrap: wrap;
 }
