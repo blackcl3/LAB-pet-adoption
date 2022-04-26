@@ -1,3 +1,27 @@
+body {
+  font-family: 'Biryani', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Biryani', sans-serif;
+}
+
+h4 {
+  font-family: 'Biryani', sans-serif;
+}
+
+p {
+  font-family: 'PT Serif', serif;
+}
+
+p.text-muted {
+  font-family: 'Biryani', sans-serif;
+}
+
 button {
   align-content: center;
 }
@@ -30,4 +54,39 @@ button {
 .dino-footer {
   background-color: rgb(252, 247, 224); 
   text-transform: capitalize;
+}
+
+.newPetContainer {
+  width: 50%; 
+  margin: 10px 0; 
+  justify-content: center;
+}
+
+.form-group {
+  margin: 10px 0; 
+}
+
+form > h3 {
+  text-align: center;
+  
+}
+
+#type {
+  text-align: center;
+}
+
+.buttonContainer select {
+  justify-content: center;
+}
+
+.buttonContainer {
+  margin: 10px 0 0 0; 
+}
+
+form > submit {
+  justify-content: center;
+}
+
+#filter-btns {
+  margin-bottom: 20px;
 }
