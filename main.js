@@ -254,7 +254,7 @@ const renderCards = (array) => {
         <div class="card-header card-title text-secondary">
         <h4>${item.name}</h4>
         </div>
-        <img src="${item.imageUrl}" class="card-img-top rounded-1" alt="${item.type}">
+        <img src="${item.imageUrl}" class="card-img-top rounded-1" alt="${item.type}" onerror="this.onerror=null;this.src='https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y'">
         <div class="card-body">
           <p>${item.color}</p>
           <p class="card-text">Special Skill: ${item.specialSkill}</p>
@@ -273,10 +273,13 @@ const renderCards = (array) => {
 const renderButtons = () => {
   let domString = ""; 
   domString = 
-    `<button id="cat-btn" type="button" class="btn btn-primary">Cat</button>
-    <button id="dog-btn" type="button" class="btn btn-primary">Dog</button>
-    <button id="dino-btn" type="button" class="btn btn-primary">Dino</button>
-    <button id="all-btn" type="button" class="btn btn-primary">All</button>`; 
+    `<div class="buttonContainer">
+      <button id="cat-btn" type="button" class="btn btn-primary">Cat</button>
+      <button id="dog-btn" type="button" class="btn btn-primary">Dog</button>
+      <button id="dino-btn" type="button" class="btn btn-primary">Dino</button>
+      <button id="all-btn" type="button" class="btn btn-primary">All</button>
+    </div>
+    `; 
   renderToDom("#filter-btns", domString)
 
 }
@@ -285,13 +288,11 @@ const renderButtons = () => {
 
 const renderForm = () => {
   let domString = ""; 
-  domString = `<form id="add-new-pet-form" class="form-control">
-      <div class="row g-3 align-items-center">
+  domString = `<form id="add-new-pet-form" class="container form-control form-inline newPetContainer mx-auto align-items-center">
+    <h3>Add Your Pet!</h3>
+      <div class="row g-3 align-items-center form-group">
         <div class="col-auto">
-          <label for="inputPetName" class="col-form-label">Pet Name</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="name" class="form-control" aria-describedby="">
+          <input type="text" id="name" class="form-control" aria-describedby="" placeholder="Pet Name" required>
         </div>
         <div class="col-auto">
           <span id="nameHelpBlock" class="form-text">
@@ -299,12 +300,9 @@ const renderForm = () => {
           </span>
         </div>
       </div>
-      <div class="row g-3 align-items-center">
+      <div class="row g-3 align-items-center form-group">
         <div class="col-auto">
-          <label for="color" class="col-form-label">Pet Color</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="color" class="form-control" aria-describedby="">
+          <input type="text" id="color" class="form-control" aria-describedby="" placeholder="Pet's Color" required>
         </div>
         <div class="col-auto">
           <span id="nameHelpBlock" class="form-text">
@@ -312,12 +310,9 @@ const renderForm = () => {
           </span>
         </div>
       </div>
-      <div class="row g-3 align-items-center">
+      <div class="row g-3 align-items-center form-group">
         <div class="col-auto">
-          <label for="imageURL" class="col-form-label">Pet Picture</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="imageURL" class="form-control" aria-describedby="">
+          <input type="text" id="imageURL" class="form-control" aria-describedby="" placeholder="Picture of Your Pet" required>
         </div>
         <div class="col-auto">
           <span class="form-text">
@@ -326,12 +321,9 @@ const renderForm = () => {
         </div>
       </div>
 
-      <div class="row g-3 align-items-center">
+      <div class="row g-3 align-items-center form-group">
         <div class="col-auto">
-          <label for="inputPetSpecialSkill" class="col-form-label">Pet Special Skill</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="specialSkill" class="form-control" aria-describedby="">
+          <input type="text" id="specialSkill" class="form-control" aria-describedby="" placeholder="Pet Special Skill" required>
         </div>
         <div class="col-auto">
           <span id="nameHelpBlock" class="form-text">
@@ -339,20 +331,15 @@ const renderForm = () => {
           </span>
         </div>
       </div>
-
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="type" class="col-form-label">Pet Type</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="type" class="form-control" aria-describedby="">
-        </div>
-        <div class="col-auto">
-          <span id="nameHelpBlock" class="form-text">
-            Please enter what kind of pet you have (Cat, Dog, or Dino). 
-          </span>
-        </div>
+      <div class="form-group">
+        <select id="type" class="custom-select custom-select-sm" required>
+          <option selected>Select The Kind of Pet You Have</option>
+          <option value="cat">Cat</option>
+          <option value="dog">Dog</option>
+          <option value="dino">Dino</option>
+        </select>
       </div>
+      
       <button type="submit" class="btn btn-primary">Submit</button>
   </form>`; 
   renderToDom("#form-container", domString)
@@ -400,7 +387,7 @@ const addeventlisteners = () => {
     if (e.target.id.includes('delete')) {
       // I still don't quite understand what's happening here (destructuring and filter method)
       const [method, petId] = e.target.id.split("--"); 
-      const index = pets.findIndex((pet) => pet.id == petId); 
+      const index = pets.findIndex((pet) => pet.id === parseInt(petId)); 
       pets.splice(index, 1); 
       renderCards(pets)
     } 
