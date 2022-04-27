@@ -1,9 +1,12 @@
+
 body {
   font-family: 'Biryani', sans-serif;
 }
 
 h1 {
-  text-align: center;
+  text-align: left;
+  font-style: italic;
+  font-weight: 700;
 }
 
 h3 {
@@ -35,6 +38,7 @@ button {
 .card {
   text-align: center;
   margin: 40px; 
+  width: 85%; 
 }
 
 .card-body > p:first-child {
@@ -89,4 +93,10 @@ form > submit {
 
 #filter-btns {
   margin-bottom: 20px;
+}
+
+@media (min-width: 736px) {
+  .card {
+    width: 18rem; 
+  }
 }
