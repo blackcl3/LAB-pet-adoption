@@ -26,7 +26,7 @@ const addeventlisteners = () => {
     form.addEventListener("submit", (e) => {
       e.preventDefault(); 
       const newPetObject = {
-        id: pets.length+1, 
+        id: pets[pets.length-1].id+1, 
         name: document.querySelector("#name").value,
         color: document.querySelector("#color").value,
         specialSkill: document.querySelector("#specialSkill").value,
@@ -43,7 +43,6 @@ const addeventlisteners = () => {
    deletePet.addEventListener("click", (e) => {
      console.log(e.target.id)
     if (e.target.id.includes('delete')) {
-      // I still don't quite understand what's happening here (destructuring and filter method)
       const [method, petId] = e.target.id.split("--"); 
       const index = pets.findIndex((pet) => pet.id === parseInt(petId)); 
       pets.splice(index, 1); 
